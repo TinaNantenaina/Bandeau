@@ -21,9 +21,9 @@ public class Blink extends Effet{
         for(int r = 0; r<this.nombreRepetition; r++){
             for(int i = 0; i<=10; i++){
                 bandeau.setForeground(bandeau.getBackground());
-                bandeau.sleep(100);
+                bandeau.sleep(200);
                 bandeau.setForeground(Color.BLACK);
-                bandeau.sleep(100);
+                bandeau.sleep(200);
             }
         }
     }
