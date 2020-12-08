@@ -20,7 +20,7 @@ public class Colori extends Effet{
         bandeau.sleep(500);
         bandeau.setBackground(Color.PINK);
         bandeau.sleep(500);
-        bandeau.setBackground(bandeau.getBackground());
+        
     }
    
     
