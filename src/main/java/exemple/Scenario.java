@@ -6,23 +6,45 @@
 package exemple;
 
 import bandeau.Bandeau;
-import java.awt.Font;
+import java.util.ArrayList;
 
 /**
  *
  * @author Tina
  */
+
 public class Scenario {
-    public static void main(String[] arg){
-        new Scenario().scenario1();
+   private ArrayList<Effet> listeEffets;
+   private Bandeau bandeau;
+    
+   public static void main (String[] args ){
+       Bandeau bandeau = new Bandeau();
+       Scenario scenario = new Scenario(bandeau);
+       scenario.ajouteEffet(new Rotation(4, bandeau, "Je tourne"));
+       scenario.ajouteEffet(new Blink(4, bandeau, "Je clignote"));
+       scenario.ajouteEffet(new Colori(4, bandeau, "je change de couleur"));
+       scenario.ajouteEffet(new Zoom(4, bandeau, "plus grand"));
+       
+       
+       
+       scenario.playEffet();
+       
+       
+}
+    public Scenario(Bandeau b){
+    this.listeEffets = new ArrayList<>();
+    this.bandeau = b;
     }
-    public void scenario1(){
-        Bandeau bandeau1 = new Bandeau();
-        bandeau1.setMessage("zoom...");
-            for (int i = 5; i<60; i++){
-                bandeau1.setFont(new Font("Try", Font.BOLD, 5+i));
-            }
-        bandeau1.sleep(1000);
-        bandeau1.close();
-    }   
+    
+    public void playEffet(){
+        for(Effet e : listeEffets){
+            e.faireEffet();
+            bandeau.sleep(500);
+        }
+    }
+    
+    public void ajouteEffet(Effet effet){
+        this.listeEffets.add(effet);
+    }
+
 }
